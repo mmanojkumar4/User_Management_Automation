@@ -6,8 +6,6 @@ INPUT_FILE="$1"
 # PASSWORD_FILE="$SECURE_DIR/user_passwords.txt"
 # LOG_FILE="C:/Users/hp/Desktop/UMA/user_management.log"
 
-
-
 SECURE_DIR="/var/secure"
 PASSWORD_FILE="$SECURE_DIR/user_passwords.txt"
 LOG_FILE="/var/log/user_management.log"
@@ -15,46 +13,44 @@ LOG_FILE="/var/log/user_management.log"
 
 
 
-# -------------------------------
+
 # Must run as root
-# -------------------------------
 if [[ $EUID -ne 0 ]]; then
   echo " Run as root: sudo $0 <file>"
   exit 1
 fi
 
-# -------------------------------
-# Validate input file
-# -------------------------------
+
+#Checking Validate input file
+
 if [[ -z "$INPUT_FILE" || ! -f "$INPUT_FILE" ]]; then
   echo " Usage: $0 <input_file>"
   exit 1
 fi
 
-# -------------------------------
+
 # Prepare secure files
-# -------------------------------
+
 mkdir -p "$SECURE_DIR"
 touch "$PASSWORD_FILE" "$LOG_FILE"
 chmod 600 "$PASSWORD_FILE" "$LOG_FILE"
 
-# -------------------------------
+
 # Logging function
-# -------------------------------
+
 log() {
   echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
 }
 
-# -------------------------------
+
 # Generate random password
-# -------------------------------
 generate_password() {
   tr -dc 'A-Za-z0-9@#$%&*' < /dev/urandom | head -c 12
 }
 
-# -------------------------------
+
 # Process input file line by line
-# -------------------------------
+
 while IFS= read -r line || [[ -n "$line" ]]; do
 
   # Skip empty lines and comments
