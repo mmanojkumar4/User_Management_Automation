@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 INPUT_FILE="$1"
 # SECURE_DIR="C:/Users/hp/Desktop/UMA/SECURE_DIR"
 # PASSWORD_FILE="$SECURE_DIR/user_passwords.txt"
@@ -10,16 +9,11 @@ SECURE_DIR="/var/secure"
 PASSWORD_FILE="$SECURE_DIR/user_passwords.txt"
 LOG_FILE="/var/log/user_management.log"
 
-
-
-
-
 # Must run as root
 if [[ $EUID -ne 0 ]]; then
   echo " Run as root: sudo $0 <file>"
   exit 1
 fi
-
 
 #Checking Validate input file
 
@@ -28,20 +22,16 @@ if [[ -z "$INPUT_FILE" || ! -f "$INPUT_FILE" ]]; then
   exit 1
 fi
 
-
 # Prepare secure files
-
 mkdir -p "$SECURE_DIR"
 touch "$PASSWORD_FILE" "$LOG_FILE"
 chmod 600 "$PASSWORD_FILE" "$LOG_FILE"
 
 
 # Logging function
-
 log() {
   echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
 }
-
 
 # Generate random password
 generate_password() {
@@ -50,7 +40,6 @@ generate_password() {
 
 
 # Process input file line by line
-
 while IFS= read -r line || [[ -n "$line" ]]; do
 
   # Skip empty lines and comments
