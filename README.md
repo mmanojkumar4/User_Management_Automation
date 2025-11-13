@@ -150,7 +150,7 @@ Re-checks permissions and prints a completion message.
 
 # **5. Example Usage**
 
-### **Input File (`users.txt`)**
+### **Input File (`employees.txt`)**
 
 ```
 # New Employees
@@ -232,6 +232,15 @@ For real production:
 
 # **7. Project Outputs**
 
+![FILE_OUTPUT](task_outputs/file_Output.png)
 
+![Groups](task_outputs/groups.png)
 
+![USERS](task_outputs/users.png)
+
+![LOGS](task_outputs/logs.png)
+
+![PASSWORDS](task_outputs/passwords.png)
+
+ 
 
