@@ -231,15 +231,15 @@ For real production:
 
 
 # **7. Project Outputs**
-
+**File_Output**
 ![FILE_OUTPUT](task_outputs/file_Output.png)
-
+**Groups_check**
 ![Groups](task_outputs/groups.png)
-
+**Users_Check**
 ![USERS](task_outputs/users.png)
-
+**Logs_Check**
 ![LOGS](task_outputs/logs.png)
-
+**Passwords_Check**
 ![PASSWORDS](task_outputs/passwords.png)
 
  
