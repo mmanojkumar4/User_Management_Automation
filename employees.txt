@@ -2,4 +2,7 @@ light; sudo,dev,www-data
 siva bhai; sudo
 manoj; dev,www-data
 manojkumaroyals;devops,admin
+
 tharun;devopler,engineer
+
+#
