@@ -55,6 +55,72 @@ project-folder/
     └── /var/log/user_management.log
 ```
 
+
+### **Architectural Diagram**
+
+```
+                ┌────────────────────────────────────────┐
+                │        Input Layer (User Data)         │
+                │----------------------------------------│
+                │   employees.txt                            │
+                │   ├─ username;group1,group2,group3     │
+                │   ├─ Comments (#) ignored              │
+                │   └─ Whitespace removed                │
+                └────────────────────────────────────────┘
+                                  │
+                                  ▼
+                ┌────────────────────────────────────────┐
+                │       Automation Script Layer           │
+                │         create_users.sh                 │
+                │----------------------------------------│
+                │  - Reads and parses input              │
+                │  - Validates users & groups            │
+                │  - Creates groups (groupadd)           │
+                │  - Creates or updates users (useradd)  │
+                │  - Generates passwords                 │
+                │  - Creates home directories            │
+                │  - Sets permissions                    │
+                │  - Logs all actions                    │
+                └────────────────────────────────────────┘
+                                  │
+                                  ▼
+          ┌─────────────────────────────────────────────────────────────┐
+          │                  System Interaction Layer                   │
+          │-------------------------------------------------------------│
+          │  Linux Commands & Services:                                 │
+          │   • getent group     → Check group existence                │
+          │   • groupadd         → Create missing groups                │
+          │   • useradd/usermod  → Create or update users               │
+          │   • chpasswd         → Set user passwords                   │
+          │   • mkdir/chown/chmod→ File & directory permissions         │
+          │   • /dev/urandom     → Random password generation           │
+          └─────────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+            ┌────────────────────────────────────────────────────────┐
+            │                   Output Layer                          │
+            │--------------------------------------------------------│
+            │ 1. Secure Password Storage                              │
+            │    /var/secure/user_passwords.txt                       │
+            │    - Contains username:password                         │
+            │    - Permission 600 (root only)                         │
+            │                                                        │
+            │ 2. Audit Logging                                        │
+            │    /var/log/user_management.log                         │
+            │    - Detailed logs of all operations                    │
+            │    - Permission 600                                     │
+            │                                                        │
+            │ 3. System Updates                                       │
+            │    /home/<username> directories created                 │
+            │    Proper ownership & permissions assigned              │
+            └────────────────────────────────────────────────────────┘
+
+
+
+```
+
+
+
 ### **Explanation**
 
 * **create_users.sh** → Main automation script
