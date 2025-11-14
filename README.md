@@ -62,7 +62,7 @@ project-folder/
                 ┌────────────────────────────────────────┐
                 │        Input Layer (User Data)         │
                 │----------------------------------------│
-                │   employees.txt                            │
+                │   employees.txt                        │
                 │   ├─ username;group1,group2,group3     │
                 │   ├─ Comments (#) ignored              │
                 │   └─ Whitespace removed                │
@@ -70,8 +70,8 @@ project-folder/
                                   │
                                   ▼
                 ┌────────────────────────────────────────┐
-                │       Automation Script Layer           │
-                │         create_users.sh                 │
+                │       Automation Script Layer          │
+                │         create_users.sh                │
                 │----------------------------------------│
                 │  - Reads and parses input              │
                 │  - Validates users & groups            │
@@ -98,21 +98,21 @@ project-folder/
                                   │
                                   ▼
             ┌────────────────────────────────────────────────────────┐
-            │                   Output Layer                          │
+            │                   Output Layer                         │
             │--------------------------------------------------------│
-            │ 1. Secure Password Storage                              │
-            │    /var/secure/user_passwords.txt                       │
-            │    - Contains username:password                         │
-            │    - Permission 600 (root only)                         │
+            │ 1. Secure Password Storage                             │
+            │    /var/secure/user_passwords.txt                      │
+            │    - Contains username:password                        │
+            │    - Permission 600 (root only)                        │
             │                                                        │
-            │ 2. Audit Logging                                        │
-            │    /var/log/user_management.log                         │
-            │    - Detailed logs of all operations                    │
-            │    - Permission 600                                     │
+            │ 2. Audit Logging                                       │
+            │    /var/log/user_management.log                        │
+            │    - Detailed logs of all operations                   │
+            │    - Permission 600                                    │
             │                                                        │
-            │ 3. System Updates                                       │
-            │    /home/<username> directories created                 │
-            │    Proper ownership & permissions assigned              │
+            │ 3. System Updates                                      │
+            │    /home/<username> directories created                │
+            │    Proper ownership & permissions assigned             │
             └────────────────────────────────────────────────────────┘
 
 
