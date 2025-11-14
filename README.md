@@ -168,7 +168,7 @@ chmod +x create_users.sh
 ### **Run Script as Root**
 
 ```bash
-sudo ./create_users.sh users.txt
+sudo ./create_users.sh employees.txt
 ```
 
 ### **Check Log File**
